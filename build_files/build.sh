@@ -28,6 +28,9 @@ rpm-ostree install -y \
     netbird \
     netbird-ui
 
+rpm --import https://download.owncloud.com/desktop/ownCloud/stable/latest/linux/Fedora_41/repodata/repomd.xml.key
+dnf config-manager addrepo --from-repofile=https://download.owncloud.com/desktop/ownCloud/stable/latest/linux/Fedora_41/owncloud-client.repo
+dnf install -y owncloud-client 
 
 # Use a COPR Example:
 #
