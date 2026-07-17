@@ -18,19 +18,22 @@ tee /etc/yum.repos.d/netbird.repo <<EOF
 name=netbird
 baseurl=https://pkgs.netbird.io/yum/
 enabled=1
-gpgcheck=0
+gpgcheck=1
 gpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key
 repo_gpgcheck=1
 EOF
 
-# install extra packages from fedora repos
-rpm-ostree install -y \
-    netbird \
-    netbird-ui
+# Import file
+dnf config-manager addrepo --from-repofile=/etc/yum.repos.d/netbird.repo
 
-rpm --import https://download.owncloud.com/desktop/ownCloud/stable/latest/linux/Fedora_41/repodata/repomd.xml.key
-dnf config-manager addrepo --from-repofile=https://download.owncloud.com/desktop/ownCloud/stable/latest/linux/Fedora_41/owncloud-client.repo
-dnf install -y owncloud-client 
+# install extra packages from fedora repos
+dnf install netbird
+dnf install libappindicator-gtk3 libappindicator netbird-ui
+
+# # install extra packages from fedora repos
+# rpm-ostree install -y \
+#     netbird \
+#     netbird-ui
 
 # Use a COPR Example:
 #
