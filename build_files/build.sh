@@ -12,23 +12,23 @@ set -ouex pipefail
 # this installs a package from fedora repos
 # dnf5 install -y tmux 
 
-# Netbird client for VPN
-tee /etc/yum.repos.d/netbird.repo <<EOF
-[netbird]
-name=netbird
-baseurl=https://pkgs.netbird.io/yum/
-enabled=1
-gpgcheck=1
-gpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key
-repo_gpgcheck=1
-EOF
+# # Netbird client for VPN
+# tee /etc/yum.repos.d/netbird.repo <<EOF
+# [netbird]
+# name=netbird
+# baseurl=https://pkgs.netbird.io/yum/
+# enabled=1
+# gpgcheck=1
+# gpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key
+# repo_gpgcheck=1
+# EOF
 
-# Import file
-dnf config-manager addrepo --from-repofile=/etc/yum.repos.d/netbird.repo
+# # Import file
+# dnf config-manager addrepo --from-repofile=/etc/yum.repos.d/netbird.repo
 
-# install extra packages from fedora repos
-dnf install netbird
-dnf install libappindicator-gtk3 libappindicator netbird-ui
+# # install extra packages from fedora repos
+# dnf install netbird
+# dnf install libappindicator-gtk3 libappindicator netbird-ui
 
 # # install extra packages from fedora repos
 # rpm-ostree install -y \
